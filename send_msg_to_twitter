@@ -4,7 +4,7 @@ def send_to_twitter():
     msg = "I am a message that will be sent to Twitter"
     password_manager = urllib.request.HTTPPasswordMgr()
     password_manager.add_password("Twitter API",
-                                  "http://twitter.com/statuses","...","...")
+                                  "http://twitter.com/statuses","...","...")#coding=utf-8 用户名和密码
     http_handler = urllob.request.HTTPBasicAuthHandler(password_manager)
     page_opener = urllib.request.build_opener(http_handler)
     urllib.request.install_opener(page_opener)

@@ -2,7 +2,7 @@ import urllib.request
 import time
 
 def get_price():
-    page = urllib.request.urlopen("http://www.sx.xinhuanet.com/newscenter/2015-09/29/c_1116708433.htm")
+    page = urllib.request.urlopen("http://www.sx.xinhuanet.com/newscenter/2015-09/29/c_1116708433.htm")#coding=utf-8 新华社煤炭交易？页面的某个联系电话
     text = page.read().decode("utf8")
     where = text.find('（0351）')
     start = where + 6

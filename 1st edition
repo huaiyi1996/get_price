@@ -1,0 +1,20 @@
+import urllib.request
+import time
+
+def get_price():
+    page = urllib.request.urlopen("http://www.sx.xinhuanet.com/newscenter/2015-09/29/c_1116708433.htm")
+    text = page.read().decode("utf8")
+    where = text.find('（0351）')
+    start = where + 6
+    end = where + 13
+    return (text[start:end])
+
+choice = input("Y/N:")
+if choice == 'Y':
+    print (get_price())
+else:
+    tele = 9999999
+    while tele >4.74:
+        time.sleep(900)
+        tele = int(get_price())
+    print (get_price())

@@ -1,0 +1,34 @@
+import urllib.request
+import time
+
+password = "NJ193KG23"#coding=utf-8 方便更改登陆密码
+
+def send_to_twitter(msg):#coding=utf-8 原来的msg成为了一个变量，msg = "I am a message that will be sent to Twitter"
+    password_manager = urllib.request.HTTPPasswordMgr()
+    password_manager.add_password("Twitter API",
+                                  "http://twitter.com/statuses","starbuzzceo",password)#coding=utf-8 用户名和密码
+    http_handler = urllob.request.HTTPBasicAuthHandler(password_manager)
+    page_opener = urllib.request.build_opener(http_handler)
+    urllib.request.install_opener(page_opener)
+    params = urllib.parse.urlencode({'status':msg})
+    resp = urllib.request.urlopen("http://twitter.com/statuses/update.json",params)
+    resp.read()
+
+def get_price():
+    page = urllib.request.urlopen("http://www.sx.xinhuanet.com/newscenter/2015-09/29/c_1116708433.htm")#coding=utf-8 新华社煤炭交易？页面的某个联系电话
+    text = page.read().decode("utf8")
+    where = text.find('（0351）')
+    start = where + 6
+    end = where + 13
+    return (text[start:end])
+
+choice = input("Do you want to see the price now (Y/N)?")
+
+if choice == 'Y':
+    send_to_twitter(get_price())#coding=utf-8 替换了print (get_price())
+else:
+    tele = 99
+    while tele >4.74:
+        time.sleep(900)
+        tele = int(get_price())
+    send_to_twitter("Buy!")
